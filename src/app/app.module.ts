@@ -7,9 +7,11 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { HttpClientModule } from '@angular/common/http'
 import { UserserviceProvider } from '../providers/userservice/userservice';
+import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login'
+import { BasicPage } from '../pages/basic/basic'
 import { WelcomePage } from '../pages/welcome/welcome'
 
 export const environment = {
@@ -29,6 +31,8 @@ export const environment = {
   declarations: [
     MyApp,
     HomePage,
+    LoginPage,
+    BasicPage,
     WelcomePage,
   ],
   imports: [
@@ -42,6 +46,8 @@ export const environment = {
   entryComponents: [
     MyApp,
     HomePage,
+    LoginPage,
+    BasicPage,
     WelcomePage,
   ],
   providers: [

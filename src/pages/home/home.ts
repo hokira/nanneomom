@@ -1,54 +1,62 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { AngularFireAuth } from 'angularfire2/auth';
-import firebase from 'firebase';
+import { UserserviceProvider } from '../../providers/userservice/userservice'
+import { WelcomePage } from '../../pages/welcome/welcome'
+import { AlertController } from 'ionic-angular';
+
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
 })
 export class HomePage {
 
-  facebook = {
-    signedin: false,
-    name: '',
-    email: ''
-  }
 
-  google = {
-    signedin: false,
-    name: '',
-    email: ''
-  }
-
-  constructor(private fireAuth: AngularFireAuth, public navCtrl: NavController) {
-
+  constructor(public alertCtrl: AlertController,
+    public userServiceProvider: UserserviceProvider,
+    public navCtrl: NavController) {
   }
 
   loginFacebook() {
-    console.log('signin')
-    this.fireAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
-    .then(res => {
-      console.log('---from facebook---')
-      console.log(res);
-    })
+    this.userServiceProvider.loginFacebook(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+        let alert = this.alertCtrl.create({
+          title: 'Login failed!',
+          buttons: ['OK']
+        });
+        alert.present();
+      }
+    )
   }
 
   loginGoogle() {
-    this.fireAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-    .then(res => {
-      console.log('---from google---')
-      console.log(res)
-    })
+    this.userServiceProvider.loginGoogle(
+      res => {
+        console.log(res);
+        this.navCtrl.push(WelcomePage)
+      },
+      err => {
+        console.log(err);
+        let alert = this.alertCtrl.create({
+          title: 'Login failed!',
+          buttons: ['OK']
+        });
+        alert.present();
+      }
+    )
   }
 
   logout() {
-    this.fireAuth.auth.signOut()
-    .then(res => {
-      console.log('---log out result---')
-      console.log(res)
-    })
+    this.userServiceProvider.logout()
+      .then(res => {
+        console.log('---log out result---')
+        console.log(res)
+      })
   }
 
 

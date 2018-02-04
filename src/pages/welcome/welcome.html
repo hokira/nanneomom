@@ -14,5 +14,29 @@
 
 
 <ion-content padding>
-  Welcome!!!
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Gender</ion-label>
+      <ion-select [(ngModel)]="gender" interface="popover">
+        <ion-option value="female">Female</ion-option>
+        <ion-option value="male">Male</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Child Age</ion-label>
+      <ion-select [(ngModel)]="childAge" interface="popover">
+        <ion-option value=1>Less than 2 Yrs old</ion-option>
+        <ion-option value=2>2 Yrs old</ion-option>
+        <ion-option value=3>3 Yrs old</ion-option>
+        <ion-option value=4>4 Yrs old</ion-option>
+        <ion-option value=5>5 Yrs old</ion-option>
+      </ion-select>
+    </ion-item>
+
+  </ion-list>
+
+  <button ion-button full (click)="doneClicked($event)">Done</button>
+
+
 </ion-content>

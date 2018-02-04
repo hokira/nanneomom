@@ -8,6 +8,9 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { HttpClientModule } from '@angular/common/http'
+import { UserserviceProvider } from '../providers/userservice/userservice';
+import { WelcomePage } from '../pages/welcome/welcome'
 
 export const environment = {
   production: false,
@@ -18,30 +21,34 @@ export const environment = {
     projectId: "ionic-test-cd963",
     storageBucket: "",
     messagingSenderId: "178669050576"
-      }
+  }
 };
-  
+
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    WelcomePage,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
+    HttpClientModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    WelcomePage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    UserserviceProvider,
   ]
 })
-export class AppModule {}
+export class AppModule { }

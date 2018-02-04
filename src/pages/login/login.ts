@@ -46,6 +46,9 @@ export class LoginPage {
   }
 
   loginGoogle() {
+    this.navCtrl.push(BasicPage);
+    /*
+
     this.userServiceProvider.loginGoogle(
       res => {
         console.log(res);
@@ -60,6 +63,7 @@ export class LoginPage {
         alert.present();
       }
     )
+    */
   }
 
   logout() {

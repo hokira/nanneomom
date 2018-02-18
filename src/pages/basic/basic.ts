@@ -20,6 +20,7 @@ import { WelcomePage } from '../../pages/welcome/welcome'
 })
 export class BasicPage {
   gender: string = null;
+  age: number = null;
   childAge: number = null;
 
   constructor(public alertCtrl: AlertController, public userServiceProvider: UserserviceProvider, public navCtrl: NavController, public navParams: NavParams) {

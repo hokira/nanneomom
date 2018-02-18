@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UserserviceProvider } from '../../providers/userservice/userservice'
 import { AlertController } from 'ionic-angular';
+import { MapPage } from '../../pages/map/map'
 
 
 /**
@@ -35,5 +36,8 @@ export class WelcomePage {
       subTitle: 'Hi ' + name + ", the next function is still in progress.",
       buttons: ['OK']
     });
-    alert.present();  }
+    //alert.present();
+
+    this.navCtrl.push(MapPage);
+  }
 }

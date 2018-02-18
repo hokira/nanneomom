@@ -13,6 +13,7 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login'
 import { BasicPage } from '../pages/basic/basic'
 import { WelcomePage } from '../pages/welcome/welcome'
+import { MapPage } from '../pages/map/map'
 
 export const environment = {
   production: false,
@@ -34,6 +35,7 @@ export const environment = {
     LoginPage,
     BasicPage,
     WelcomePage,
+    MapPage,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +51,7 @@ export const environment = {
     LoginPage,
     BasicPage,
     WelcomePage,
+    MapPage,
   ],
   providers: [
     StatusBar,
